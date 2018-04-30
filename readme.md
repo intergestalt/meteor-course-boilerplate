@@ -1,3 +1,8 @@
-# Boilerplate Meteor Project
+# intergestalt/meteor-ract-boilerplate
 
-This includes a basic react and auth setup.
+includes
+- simpl-schema 2
+- react router 3
+- examples for collection, schema, method, subscription
+- admin area
+- uniforms with basic css and table

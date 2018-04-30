@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 
+import options from '../config/accounts';
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ export default class Login extends React.Component {
 
     Meteor.loginWithPassword({email}, password, (err) => {
       if (err) {
-        this.setState({error: 'Unable to login. Check email and password.'});
+        this.setState({error: 'Unable to login. Check name and password.'});
       } else {
         this.setState({error: ''});
       }
@@ -32,12 +34,12 @@ export default class Login extends React.Component {
           {this.state.error ? <p>{this.state.error}</p> : undefined}
 
           <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form">
-            <input type="email" ref="email" name="email" placeholder="Email"/>
+            <input type="email" ref="email" name="email" placeholder="Name"/>
             <input type="password" ref="password" name="password" placeholder="Password"/>
             <button className="button">Login</button>
           </form>
 
-          <Link to="/signup">Need an account?</Link>
+          {options.forbidClientAccountCreation || <Link to="/signup">Need an account?</Link>}
         </div>
       </div>
     );

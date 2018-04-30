@@ -3,6 +3,65 @@
 @import './components/boxed-view';
 @import './components/button';
 @import './components/header';
+@import './components/form';
 @import './components/page-content';
-@import './components/checkbox';
-@import './components/item';
+
+table {
+  border-collapse: collapse;
+  > tbody > tr:hover {
+    background-color: rgba(0,0,0,0.1);
+    //cursor: pointer;
+  }
+  td, th {
+    border: 1px black solid;
+    padding: 1ex;
+    table {
+      width: calc(100% + 2ex + 1px);
+      box-sizing:border-box;
+      margin: calc(-1ex - 0.5px);
+      //margin: -1ex;
+      border:none;
+      tr:hover {
+        background-color: rgba(0,0,0,0);
+      }
+    }
+  }
+  th.narrow {
+    width:2em;
+  }
+}
+
+.header {
+  nav, ul, li {
+    padding:0;
+    margin:0;
+    line-height:2.5;
+    display: inline-block;
+    &:not(first-child) {
+      margin-left:1em;
+    }
+  }
+  nav ul li {
+    list-style-type:none;
+    a {color:white;}
+  }
+}
+
+.page-home {
+  font-size:4vh;
+  ul {
+    list-style-type: none;
+    li {
+      padding:0.5em;
+    }
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .qr-code {
+    border:1px solid black;
+    text-align: center;
+    padding: 0.5em;
+  }
+}
