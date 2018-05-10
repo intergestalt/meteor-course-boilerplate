@@ -16,14 +16,9 @@ const PrivateHeader = (props) => {
             </li>            
             <li>
               <Link to="/dashboard">
-                Dashboard
+                Admin
               </Link>
             </li>                      
-            <li>
-              <Link to="/admin/entries">
-                Entries
-              </Link>
-            </li>
           </ul>
         </nav>
         <button className="button button--link-text" onClick={() => Accounts.logout()}>Logout</button>

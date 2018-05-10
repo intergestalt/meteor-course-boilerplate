@@ -6,9 +6,6 @@ import { Session } from 'meteor/session';
 import AdminContainer from './AdminContainer'
 import Entries from '../collections/entries'
 import {entrySchema} from '../schemas/entry'
-import choiceSchema from '../schemas/choice'
-import {regexpHelp} from '../config/help'
-//import ReactDataGrid from 'react-data-grid';
 
 class AdminEntries extends React.Component {
   constructor(props) {
@@ -47,10 +44,6 @@ class AdminEntries extends React.Component {
       //console.log(field)
       if (typeof(field[this.props.language])=="string") {
           text = field[this.props.language]
-        }
-      else if (key == "choices") {
-          subkeys = choiceSchema._firstLevelSchemaKeys.filter(k => k != "_id");
-          text = this.renderTable(field, choiceSchema, subkeys,entry._id)
         }
       else {
         text = field
@@ -94,22 +87,12 @@ class AdminEntries extends React.Component {
   }
 
   render() {
-    console.log(entrySchema._schema['text_display_delay']['label'])
     if (!this.props.ready) {
       return <p>Loading...</p>
     } else return (
     <AdminContainer title="Entries">
       <Link style={{marginBottom:"1ex"}} className="buttonlink" to="/admin/entries/new">New</Link>
       {this.renderTable(this.props.entries, entrySchema, entrySchema._firstLevelSchemaKeys.filter(k => ["_id","style_key"].indexOf(k)===-1))}
-      <code className="help-container">
-        {regexpHelp}
-      </code>
-      <div>
-        <div style={{margin:"1em"}}>JSON</div>
-        <code style={{display:"none"}}>
-          {JSON.stringify(this.props.entries)}
-        </code>
-      </div>
     </AdminContainer>
   )};
 };

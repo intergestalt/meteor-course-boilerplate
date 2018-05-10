@@ -30,7 +30,7 @@ Meteor.startup(() => {
   */
 
   if (Entries.find().count() == 0) {
-    const entry = entrySchema.clean({})
+    const entry = entrySchema.clean({key:"Hi"})
     console.log('inserting initial entry ', entry);
     Entries.insert(entry)
   }

@@ -7,8 +7,7 @@ import Entries from '../collections/entries'
 import {entrySchema} from '../schemas/entry'
 import AutoForm from 'uniforms-unstyled/AutoForm';
 import SubmitField from 'uniforms-unstyled/SubmitField';
-import {Link} from 'react-router'
-import {regexpHelp} from '../config/help'
+import {Link, browserHistory} from 'react-router'
 
 class AdminEntry extends React.Component {
   constructor() {
@@ -37,6 +36,13 @@ class AdminEntry extends React.Component {
         },
         this.saveCallback
       )};
+  }
+
+  delete(doc) {
+    if (confirm(`delete ${doc.key} ?`)) {
+      browserHistory.go(-1)
+      Entries.remove(doc._id)
+    } 
   }
 
   sanitize(doc) {
@@ -70,6 +76,8 @@ class AdminEntry extends React.Component {
           model={this.props.entry}
           submitField={MySubmitField}
         />
+        {this.props.entry && <a className="delete-button link" onClick={()=>this.delete(this.props.entry)}>delete</a>}
+        <br /><br />        
         <Link className="back-button" to="/admin/entries">back</Link>
       </div>
     );
@@ -81,9 +89,6 @@ class AdminEntry extends React.Component {
     } else return (
     <AdminContainer title={"Entry " + (this.props.entry ? this.props.entry.key : "new") }>
       {this.renderForm()}
-      <code className="help-container" style={{float:"left"}}>
-        {regexpHelp}
-      </code>
     </AdminContainer>
   )};  
 

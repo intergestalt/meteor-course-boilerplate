@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router'
 
 import PrivateHeader from './PrivateHeader';
-import AdminPlayers from './AdminPlayers'
 
 export default () => {
   return (
@@ -13,7 +12,6 @@ export default () => {
           <h2>Menu</h2>
           <Link to="/admin/entries">Edit Entries</Link>
         </section>
-        <AdminPlayers />
       </div>
     </div>
   );

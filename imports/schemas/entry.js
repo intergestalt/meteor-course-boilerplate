@@ -12,6 +12,11 @@ const entrySchemaDefinitions =   {
     autoValue: ()=>Random.id(),
     uniforms: { component: () => null },
   },  
+  key: {
+    type: String,
+    required: true,
+    defaultValue: ""
+  },  
   text: {
     label: "Text",
     type: MultilingualStringSchema,  
